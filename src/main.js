@@ -1,3 +1,4 @@
+import './styles.css';
 import ContactsList from "./components/contactsList/ContactsList";
 
 
