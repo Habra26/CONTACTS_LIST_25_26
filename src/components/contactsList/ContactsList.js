@@ -28,5 +28,21 @@ export default class ContactsList {
         this.domElt.innerHTML = getTemplate();
         this.contacts.forEach(contact => contact.render(this.domElt.querySelector(".contacts-list")));
         this.renderContactsCount();
+        this.initEvents();
+    }
+
+    async addFirstname(data) {
+        const firstname = await DB.create(data);
+        const newFirstname = new Contact(firstname);
+        this.contacts.push(newFirstname);
+        newFirstname.render(this.domElt.querySelector('.contacts-list'));
+        this.renderContactsCount();
+    }
+
+    initEvents() {
+        this.domElt.querySelector('.new-firstname').addEventListener("change", (e) => {
+            this.addFirstname(e.target.value);
+            e.target.value = "";
+        });
     }
 }
