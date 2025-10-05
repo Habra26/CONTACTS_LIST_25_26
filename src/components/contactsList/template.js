@@ -32,7 +32,7 @@ export default function getTemplate() {
           />
         </div>
         <button
-          class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+          class="add-btn w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
         >
           Add
         </button>

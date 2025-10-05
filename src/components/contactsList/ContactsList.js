@@ -31,18 +31,28 @@ export default class ContactsList {
         this.initEvents();
     }
 
-    async addFirstname(data) {
-        const firstname = await DB.create(data);
-        const newFirstname = new Contact(firstname);
-        this.contacts.push(newFirstname);
-        newFirstname.render(this.domElt.querySelector('.contacts-list'));
+    async addContact(data) {
+        const create = await DB.createContact(data);
+        const contact = new Contact(create);
+        this.contacts.push(contact);
+        contact.render(this.domElt.querySelector(".contacts-list"));
         this.renderContactsCount();
-    }
+}
 
     initEvents() {
-        this.domElt.querySelector('.new-firstname').addEventListener("change", (e) => {
-            this.addFirstname(e.target.value);
-            e.target.value = "";
-        });
+        this.domElt.querySelector('.add-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+
+    this.addContact({
+        firstname: this.domElt.querySelector(".new-firstname").value,
+        lastname: this.domElt.querySelector(".new-lastname").value,
+        email: this.domElt.querySelector(".new-email").value,
+    });
+
+        this.domElt.querySelector('.new-firstname').value = "";
+        this.domElt.querySelector('.new-lastname').value = "";
+        this.domElt.querySelector('.new-email').value = "";
+    });
+
     }
 }
