@@ -2,7 +2,7 @@ export default function getTemplate(contact) {
     return `
         <tr class="contact-row" data-id="${contact.id}">
             <td class="p-4">
-                <span class="isEditing-hidden">${contact.firstname}</span>
+                <span class="isEditing-hidden field-firstname">${contact.firstname}</span>
                 <input
                   type="text"
                   class="input-firstname isEditing-visible w-full mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -10,7 +10,7 @@ export default function getTemplate(contact) {
                 />
             </td>
             <td class="p-4">
-                <span class="isEditing-hidden">${contact.lastname}</span>
+                <span class="isEditing-hidden field-lastname">${contact.lastname}</span>
                 <input
                   type="text"
                   class="input-lastname isEditing-visible w-full mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -18,7 +18,7 @@ export default function getTemplate(contact) {
                 />
             </td>
             <td class="p-4">
-                <span class="isEditing-hidden">${contact.email}</span>
+                <span class="isEditing-hidden field-email">${contact.email}</span>
                 <input
                   type="text"
                   class="input-email isEditing-visible w-full mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

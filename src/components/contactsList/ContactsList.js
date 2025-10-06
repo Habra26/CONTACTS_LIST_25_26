@@ -10,6 +10,7 @@ export default class ContactsList {
         this.contacts = [];
         this.loadContacts();
     }
+
     async loadContacts() {
         const contacts = await DB.findAll();
         this.contacts = contacts.map(contact => new Contact(contact, this));
@@ -47,9 +48,13 @@ export default class ContactsList {
         this.renderContactsCount();
     }
 
+    async updateContact(contact) {
+        await DB.updateContact(contact);
+    }
+
     initEvents() {
         this.domElt.querySelector('.add-btn').addEventListener('click', (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
     this.addContact({
         firstname: this.domElt.querySelector(".new-firstname").value,

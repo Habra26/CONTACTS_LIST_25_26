@@ -30,4 +30,18 @@ export default class DB {
         return response.json();
     }
 
+    static async updateContact(data) {
+        const response = await fetch(this.apiURL + "contacts/" + data.id, {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                firstname: data.firstname,
+                lastname: data.lastname,
+                email: data.email,
+                createdAt: Date.now(),
+            })
+        });
+        return response.json();
+    }
+
 }
