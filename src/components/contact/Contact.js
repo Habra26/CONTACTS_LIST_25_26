@@ -1,16 +1,27 @@
 import getTemplate from './template';
 
 export default class Contact {
-    constructor(data) {
+    constructor(data, list) {
         this.id = data.id;
         this.firstname = data.firstname;
         this.lastname = data.lastname;
         this.email = data.email;
         this.createdAt = data.createdAt;
+        this.domElt = null;
+        this.list = list;
     }
+
     render (el) {
-        const template = document.createElement('tr');
+        const template = document.createElement('template');
         template.innerHTML = getTemplate(this);
-        el.append(template);
+        this.domElt = template.content.firstElementChild;
+        this.initEvents();
+        el.append(this.domElt);
+    }
+
+    initEvents() {
+        this.domElt.querySelector(".btn-delete").addEventListener('click', () => {
+            this.list.deleteOneById(this.id);
+        });
     }
 }

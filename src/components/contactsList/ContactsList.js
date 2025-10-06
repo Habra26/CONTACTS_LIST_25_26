@@ -12,7 +12,7 @@ export default class ContactsList {
     }
     async loadContacts() {
         const contacts = await DB.findAll();
-        this.contacts = contacts.map(contact => new Contact(contact));
+        this.contacts = contacts.map(contact => new Contact(contact, this));
         this.render();
     }
 
@@ -37,7 +37,15 @@ export default class ContactsList {
         this.contacts.push(contact);
         contact.render(this.domElt.querySelector(".contacts-list"));
         this.renderContactsCount();
-}
+    }
+
+    async deleteOneById(id) {
+        const resp = await DB.deleteOneById(id);
+        const index = this.contacts.findIndex(((contact) => (contact.id == id)));
+        this.contacts.splice(index, 1);
+        this.domElt.querySelector(`[data-id='${id}']`).remove();
+        this.renderContactsCount();
+    }
 
     initEvents() {
         this.domElt.querySelector('.add-btn').addEventListener('click', (e) => {

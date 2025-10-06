@@ -1,6 +1,6 @@
 export default function getTemplate(contact) {
     return `
-        <tr class="contact-row">
+        <tr class="contact-row" data-id="${contact.id}">
             <td class="p-4">
                 <span class="isEditing-hidden">${contact.firstname}</span>
                 <input
