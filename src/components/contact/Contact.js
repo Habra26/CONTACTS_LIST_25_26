@@ -19,9 +19,17 @@ export default class Contact {
         el.append(this.domElt);
     }
 
+    editMode() {
+        this.domElt.classList.toggle("isEditing");
+    }
+
     initEvents() {
         this.domElt.querySelector(".btn-delete").addEventListener('click', () => {
             this.list.deleteOneById(this.id);
+        });
+
+        this.domElt.querySelector(".btn-edit").addEventListener("click", () => {
+            this.editMode();
         });
     }
 }
